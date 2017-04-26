@@ -336,7 +336,7 @@ var ReactDOMFiberComponent = {
       } else if (props.is) {
         domElement = ownerDocument.createElement(type, {is: props.is});
       } else {
-        // Separate else branch instead of using `props.is || undefined` above becuase of a Firefox bug.
+        // Separate else branch instead of using `props.is || undefined` above because of a Firefox bug.
         // See discussion in https://github.com/facebook/react/pull/6896
         // and discussion in https://bugzilla.mozilla.org/show_bug.cgi?id=1276240
         domElement = ownerDocument.createElement(type);
@@ -393,6 +393,7 @@ var ReactDOMFiberComponent = {
       case 'object':
       case 'source':
       case 'video':
+      case 'details':
         trapBubbledEventsLocal(domElement, tag);
         props = rawProps;
         break;

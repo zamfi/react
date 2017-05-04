@@ -15,6 +15,7 @@ var ReactDOMFeatureFlags = {
   fiberAsyncScheduling: false,
   useCreateElement: true,
   useFiber: true,
+  allowCustomAttributes: true,
 };
 
 module.exports = ReactDOMFeatureFlags;

@@ -940,6 +940,10 @@ src/renderers/dom/shared/__tests__/ReactDOMComponent-test.js
 * should suggest property name if available
 * renders innerHTML and preserves whitespace
 * render and then updates innerHTML and preserves whitespace
+* does not allow assignment of custom attributes to elements
+* allows data attributes
+* allows assignment of custom attributes to elements
+* warns on bad casing
 
 src/renderers/dom/shared/__tests__/ReactDOMComponentTree-test.js
 * finds nodes for instances

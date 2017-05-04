@@ -105,13 +105,13 @@ var DOMPropertyOperations = {
         return attributeName + '=""';
       }
       return attributeName + '=' + quoteAttributeValueForBrowser(value);
+    } else if (DOMProperty.isWriteableAttribute(name)) {
+      if (value == null) {
+        return '';
+      }
+      return name + '=' + quoteAttributeValueForBrowser(value);
     }
-
-    if (value == null) {
-      return '';
-    }
-
-    return name.toLowerCase() + '=' + quoteAttributeValueForBrowser(value);
+    return null;
   },
 
   /**
@@ -166,7 +166,7 @@ var DOMPropertyOperations = {
           node.setAttribute(attributeName, '' + value);
         }
       }
-    } else if (DOMProperty.isReservedProp(name) === false) {
+    } else if (DOMProperty.isWriteableAttribute(name)) {
       DOMPropertyOperations.setValueForAttribute(node, name, value);
       return;
     }
@@ -244,7 +244,7 @@ var DOMPropertyOperations = {
       } else {
         node.removeAttribute(propertyInfo.attributeName);
       }
-    } else {
+    } else if (DOMProperty.isWriteableAttribute(name)) {
       node.removeAttribute(name);
     }
 

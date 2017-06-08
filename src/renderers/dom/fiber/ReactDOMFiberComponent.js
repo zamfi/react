@@ -211,10 +211,7 @@ function setInitialDOMProperties(
       }
     } else if (isCustomComponentTag) {
       DOMPropertyOperations.setValueForAttribute(domElement, propKey, nextProp);
-    } else if (
-      DOMProperty.properties[propKey] ||
-      DOMProperty.isCustomAttribute(propKey)
-    ) {
+    } else if (DOMProperty.isWriteableAttribute(propKey)) {
       // If we're updating to null or undefined, we should remove the property
       // from the DOM node instead of inadvertently setting to a string. This
       // brings us in line with the same behavior we have on initial render.
@@ -256,10 +253,7 @@ function updateDOMProperties(
       } else {
         DOMPropertyOperations.deleteValueForAttribute(domElement, propKey);
       }
-    } else if (
-      DOMProperty.properties[propKey] ||
-      DOMProperty.isCustomAttribute(propKey)
-    ) {
+    } else if (DOMProperty.isWriteableAttribute(propKey)) {
       // If we're updating to null or undefined, we should remove the property
       // from the DOM node instead of inadvertently setting to a string. This
       // brings us in line with the same behavior we have on initial render.
